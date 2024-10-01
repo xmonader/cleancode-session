@@ -101,3 +101,61 @@ class Customer {
 ```
 
 Clean Code: The class Customer, method displayData, and variable data clearly indicate their roles and contents.
+
+
+
+### Example
+
+Misleading name
+
+Bad Code
+
+```typescript
+function hasData(): void {
+    if this.socket.ready() {
+        console.log("no data in the socket yet")
+    }
+}
+```
+
+Bad Code: name doesn't really 
+
+Clean Code
+
+```typescript
+function hasData(): boolean {
+    if ... {
+        return true
+    }
+    return false
+}
+```
+
+
+
+
+Bad Code
+
+```typescript
+function isValidUsername(username: string): boolean {
+    if ... {
+        return true
+    }
+    throw ValidationError(...)
+}
+```
+
+Bad Code: the function raises in case of invalid username instead of returning false
+
+
+Clean Code
+
+```typescript
+function isValidUsername(username: string): boolean {
+    if ... {
+        return true
+    }
+    throw false
+}
+```
+
