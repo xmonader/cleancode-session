@@ -1,3 +1,12 @@
+## Dependency Injection: Making Code Testable and Flexible
+
+We explain the concept of dependency injection (DI) in Python and its benefits for writing maintainable and testable code.
+
+### The problem:
+
+- Slow Tests: Code that relies on external services or side effects (like time.sleep) can make tests slow.
+- Untestable Logic: Functionality that depends on specific implementations (like a database or email service) is difficult to test in isolation.
+- Tight Coupling: Code that's tightly coupled to specific dependencies can be inflexible and difficult to adapt.
 
 ```python
 def add(a, b):
@@ -9,7 +18,7 @@ add(1,2) == 3
 add(4,5) == 9
 ```
 
-If we run this 100 times => it will cost us 100 seconds, which isn't optimal. What we want to do is be able to "override" the behavior of sleep during testing so we can save time
+If we run this 100 times, it will cost us 100 seconds, which isn't optimal. What we want to do is be able to "override" the behavior of sleep during testing so we can save time
 
 ### Systematic approach
 
@@ -25,10 +34,10 @@ def add(a, b):
     time.sleep(1) ## simulate some sort of a time delay
     return a+b
 ```
-1- In this code the problem (the dependency) is `time.sleep` it will cause the execution to block for 1 second
-2- create a new function that takes a `sleep_func` parameter
-3- replace `time.sleep` with `sleep_func`
-4- at your convenience you can call `add(1,2, time.sleep)` or `add(1,2, sleep_func)`
+- In this code the problem (the dependency) is `time.sleep` it will cause the execution to block for 1 second
+- create a new function that takes a `sleep_func` parameter
+- replace `time.sleep` with `sleep_func`
+- at your convenience you can call `add(1,2, time.sleep)` or `add(1,2, sleep_func)`
 
 
 ```python
@@ -63,13 +72,13 @@ def create_weekly_report(username):
 ```
 
 While this looks like a typical code it has so many issues
-1- not testable (except if your run everything in a real setup)
-2- not flexible to change
-3- depending on global variables that can be changed behind your back
+- not testable (except if your run everything in a real setup)
+- not flexible to change
+- depending on global variables that can be changed behind your back
 
 So, Let's refactor! grab your marker and mark the dependencies/side effects
 
-1- Mark the dependencies/side effects
+- Mark the dependencies/side effects
 ```python
 app = App()
 db = app.db
@@ -87,7 +96,7 @@ def create_weekly_report(username):
 ```
 
 
-2- Replace the dependencies with these input parameters
+- Replace the dependencies with these input parameters
 
 
 ```python
