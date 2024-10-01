@@ -475,3 +475,29 @@ function canAccess(user: User, resource: Resource): boolean {
 
 
 Clean Code: Encapsulates each condition into its own function, clarifying the access rules.
+
+
+
+
+### Example
+
+Bad
+```typescript
+if (user.logged_in) {
+    if user.admin {
+        show_cp_link()
+    }
+}
+```
+
+- Unnecessary nesting 
+
+Good
+
+```typescript
+if (user.logged_in && user.admin ) {
+        show_cp_link()
+}
+```
+
+Can use shortcircuting  to avoid that
