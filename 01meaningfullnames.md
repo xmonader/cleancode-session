@@ -2,6 +2,38 @@
 
 Choosing descriptive and meaningful names for variables, functions, classes, interfaces, and other identifiers enhances code readability and maintainability.
 
+
+
+
+### Example
+Bad Code
+```typescript
+function doIt(a: number, b: number): number {
+    return a + b;
+}
+
+let x = doIt(5, 2);
+console.log(x);
+```
+
+
+Bad Code: The function calc and variables a, b, x have ambiguous names that don't convey their purpose.
+
+Clean Code
+```typescript
+function add(num1: number, num2: number): number {
+    return num1+num2
+}
+
+const sum = add(5, 2);
+console.log(sum);
+```
+
+Clean Code: Descriptive names like add, num1, num2, sum
+
+
+
+
 ### Example
 Bad Code
 ```typescript
